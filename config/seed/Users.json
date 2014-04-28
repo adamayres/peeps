@@ -1,0 +1,50 @@
+[
+  {
+    "username": "Crazy 8",
+    "password": "test123",
+    "email": "crazy8@gmail.com",
+    "avatar": "adam-crazy.jpg"
+  },
+  {
+    "username": "puffer_O_o",
+    "password": "test123",
+    "email": "puffer@gmail.com",
+    "avatar": "adam-puffer.jpg"
+  },
+  {
+    "username": "shk_N'_awe",
+    "password": "test123",
+    "email": "shknawe@gmail.com",
+    "avatar": "adam-shock.jpg"
+  },
+  {
+    "username": "b-sheeply",
+    "password": "test123",
+    "email": "sheeply@gmail.com",
+    "avatar": "baxter-sheep.jpg"
+  },
+  {
+    "username": "baxt",
+    "password": "test123",
+    "email": "baxt@gmail.com",
+    "avatar": "baxter-smile.jpg"
+  },
+  {
+    "username": "b_man",
+    "password": "test123",
+    "email": "bman@gmail.com",
+    "avatar": "baxter-toys.jpg"
+  },
+  {
+    "username": "coco-loco",
+    "password": "test123",
+    "email": "magicaj@gmail.com",
+    "avatar": "adam-coco-loco.jpg"
+  },
+  {
+    "username": "cheech",
+    "password": "test123",
+    "email": "cheech@gmail.com",
+    "avatar": "cheech-chong.jpg"
+  }
+]

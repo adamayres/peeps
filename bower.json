@@ -1,0 +1,33 @@
+{
+  "name": "li-app-seed",
+  "version": "0.0.1",
+  "authors": [
+    "Adam Ayres <adam.ayres@lithium.com>"
+  ],
+  "description": "Sails, angular and gulp seed",
+  "main": "app.js",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-sanitize": "~1.2.16",
+    "angular-route": "~1.2.15",
+    "angular-animate": "~1.2.15",
+    "bootstrap-sass": "~3.0.2",
+    "animate-sass": "~0.3.0",
+    "font-awesome": "~4.0.3",
+    "socket.io-client": "~0.9.16"
+  },
+  "devDependencies": {
+    "jquery": "~2.1.0",
+    "angular-mocks": "~1.2.15"
+  },
+  "resolutions": {
+    "angular-bootstrap": "~0.10.0"
+  }
+}

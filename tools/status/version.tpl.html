@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Version</title>
+    <link rel="stylesheet" href="/styles/main.css"/>
+  </head>
+  <body>
+    <div class="container">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>
+            <a href="https://github.com/lithiumtech/sails-angular-gulp-seed/tree/master/<%= branch %>"><span class="label label-info branch"><%= branch %></span></a> | <span class="version"><%= version %></span> | <span class="timestamp"><%= timestamp %></span>
+          </h4>
+        </div>
+        <div class="panel-body">
+          <p>Last Commit:</p>
+          <ul>
+            <li><a class="commit-hash" href="https://github.com/lithiumtech/sails-angular-gulp-seed/commit/<%= commit.hash %>"><%= commit.hash %></a></li>
+            <li class="commit-date"><%= commit.date %></li>
+            <li class="commit-comment"><%= commit.comment %></li>
+            <li class="commit-author"><%= commit.author %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+

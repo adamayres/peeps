@@ -1,0 +1,47 @@
+<!doctype html>
+<html ng-app="li.app">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title ng-bind="title"></title>
+    <!-- build:css /styles/style.css -->
+    <link rel="stylesheet" href="/.tmp/assets/styles/main.css">
+    <!-- endbuild -->
+    <link rel="shortcut icon" type="image/ico" href="/favicon.png">
+  </head>
+  <body ng-cloak>
+    <li:site-nav></li:site-nav>
+    <div class="container">
+      <div class="row">
+        <div ng-view="ng-view" class="col-md-12" />
+      </div>
+    </div>
+
+    <!-- External deps for CDN -->
+    <script type="text/javascript" src="/bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script type="text/javascript" src="/bower_components/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="/bower_components/socket.io-client/dist/socket.io.js"></script>
+
+    <!-- build:js /js/scripts.js -->
+
+    <!-- bower_components -->
+    <script type="text/javascript" src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script type="text/javascript" src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
+    <!-- Core libs -->
+    <script type="text/javascript" src="/assets/js/app.js"></script>
+    <script type="text/javascript" src="/.tmp/assets/js/app-tpls.js"></script>
+    <script type="text/javascript" src="/assets/js/filters/unsafe/unsafe.js"></script>
+    <script type="text/javascript" src="/assets/js/services/angular-sails/angular-sails.io.js"></script>
+    <script type="text/javascript" src="/assets/js/services/messages-manager/messages-manager.js"></script>
+    <script type="text/javascript" src="/assets/js/services/authentication-manager/authentication-manager.js"></script>
+    <script type="text/javascript" src="/assets/js/directives/welcome/welcome.js"></script>
+    <script type="text/javascript" src="/assets/js/directives/site-nav/site-nav.js"></script>
+    <script type="text/javascript" src="/assets/js/directives/messages/messages.js"></script>
+    <script type="text/javascript" src="/assets/js/directives/user-picker/user-picker.js"></script>
+    <script type="text/javascript" src="/assets/js/directives/user/user.js"></script>
+    <!-- __new_directive_placeholder__ -->
+
+    <!-- endbuild -->
+  </body>
+</html>

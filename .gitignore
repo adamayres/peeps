@@ -1,0 +1,54 @@
+########################
+# sails
+########################
+.sails
+.waterline
+.rigging
+.tmp
+www
+
+########################
+# node.js / npm
+########################
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+
+pids
+logs
+results
+
+## don't include compiled code from node_modules (http://eng.yammer.com/managing-node-js-dependencies-and-deployments-at-yammer/)
+#bin
+#scripts
+#node_modules/**/out
+#node_modules/**/build
+#npm-debug.log
+
+## not doing ^ yet, issues with windows paths being too long
+node_modules/
+bower_components/
+
+
+########################
+# misc / editors
+########################
+*~
+*#
+.DS_STORE
+.netbeans
+nbproject
+.idea
+coverage
+test-reports
+
+
+########################
+# local config
+########################
+# config/local.js

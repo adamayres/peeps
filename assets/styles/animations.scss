@@ -1,0 +1,14 @@
+.ng-enter, .ng-hide-remove {
+  -webkit-animation: fadeInUp 300ms;
+  -moz-animation: fadeInUp 300ms;
+  -ms-animation: fadeInUp 300ms;
+  animation: fadeInUp 300ms;
+}
+
+//.ng-leave, .ng-hide.ng-hide-add {
+//  display: block !important;
+//  -webkit-animation: fadeOut 300ms;
+//  -moz-animation: fadeOut 300ms;
+//  -ms-animation: fadeOut 300ms;
+//  animation: fadeOut 300ms;
+//}

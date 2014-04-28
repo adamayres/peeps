@@ -1,0 +1,36 @@
+<div class="li-messages">
+
+  <div ng-repeat="message in messages track by message.id" class="li-message clearfix">
+    <div class="col-sm-2 hidden-xs">
+      <div class="li-user">
+        <div class="li-message-author-container">
+          <h5 class="li-message-author"><strong>{{message.user.username}}</strong></h5>
+        </div>
+        <div>
+          <img ng-src="/assets/images/avatars/{{message.user.avatar}}" class="li-user-avatar" />
+        </div>
+      </div>
+      <span class="label label-info" ng-show="isOnline()">Online</span>
+    </div>
+    <div class="col-sm-10">
+      <div class="li-message-actions">
+        <i class="fa fa-minus-circle pull-right" ng-click="delete($index, message)" tooltip="Delete" ng-show="currentUser.id === message.user.id"></i>
+        <i class="fa fa-pencil pull-right" ng-click="edit(message)" tooltip="Edit" ng-show="currentUser.id === message.user.id"></i>
+      </div>
+      <h3 class="li-message-subject" ng-bind="message.subject"></h3>
+      <p class="li-message-body lead" ng-bind="message.body"></p>
+    </div>
+  </div>
+  <form novalidate role="form" ng-submit="submit()" name="form" class="li-message-form">
+    <hr />
+    <div class="form-group" ng-class="{'has-error': form.messageSubject.$dirty && form.messageSubject.$invalid, 'has-success': form.messageSubject.$dirty && !form.messageSubject.$invalid}">
+      <input class="form-control" type="text" ng-model="message.subject" name="messageSubject" placeholder="Subject" required />
+    </div>
+    <div class="form-group" ng-class="{'has-error': form.messageBody.$dirty && form.messageBody.$invalid, 'has-success': form.messageBody.$dirty && !form.messageBody.$invalid}">
+      <textarea class="form-control" rows="3" ng-model="message.body" placeholder="Write a message!" name="messageBody" required></textarea>
+    </div>
+    <div class="form-group li-rnr-message-form-buttons">
+      <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,12 @@
+[
+  {
+    "subject": "Seed message 1",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ullamcorper sapien lorem. Praesent iaculis turpis nec semper placerat. Donec non libero faucibus, euismod neque a, condimentum elit. Ut sodales imperdiet enim, sed suscipit diam iaculis ac.",
+    "userId": 1
+  },
+  {
+    "subject": "Seed message 2",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia purus sit amet leo laoreet, vel rutrum arcu fermentum. Curabitur scelerisque, lacus quis blandit porttitor, lorem libero laoreet erat, in vehicula lacus arcu in sapien. Curabitur a dui non erat rhoncus fermentum quis eget lorem. \n\nVestibulum quis tempus orci, eg",
+    "userId": 2
+  }
+]

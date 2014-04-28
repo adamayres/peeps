@@ -1,0 +1,23 @@
+<div class="li-app-site-nav">
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <a class="navbar-brand" ng-href="/">App</a>
+      <ul class="nav navbar-nav">
+        <li ng-class="{active: navId === 'messages'}"><a href="/messages">Messages</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <div ng-show="newMessages > 0" class="li-messages-new">
+            <a href="#">New Message <span class="badge" ng-bind="newMessages"></span></a>
+          </div>
+        </li>
+        <li>
+          <li:user user="currentUser"></li:user>
+        </li>
+        <li>
+          <li:user-picker></li:user-picker>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>

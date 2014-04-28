@@ -1,0 +1,20 @@
+language: node_js
+
+node_js:
+- 0.10.26
+
+after_script:
+- npm run coveralls
+
+cache:
+  directories:
+  - node_modules
+  - bower_components
+
+#notifications:
+#  hipchat:
+#    matrix:
+#    - HIPCHATKEY@#NOW
+#    rooms:
+#      secure: Kj1EaKpX1egBkParoOfdq+4GAweFX1H007uKaIB4QMwjLT+f6GIG1ZECtXpgxo0RTUgR/pbPO89Ew0EXaT0okP7Blufs6RXMi5Ff7hFmlon2RorEhYVNzajb206Vdl6U4QmijiX2JDSmWCznUIj4/apV3/DC1nFT/mbHXllpiNk=
+
