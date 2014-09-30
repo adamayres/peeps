@@ -10,11 +10,8 @@ var app = angular.module('li.main.app', [
   'ui.bootstrap',
   'li.main.tpls',
   'li.app.filters.unsafe',
-  'li.app.directives.welcome',
-  'li.app.directives.site-nav',
-  'li.app.directives.messages',
-  'li.app.directives.user-picker',
-  'li.app.directives.user'///__new_directive_placeholder__///
+  'li.app.directives.welcome'
+  ///__new_directive_placeholder__///
 ]);
 
 app.config(function($routeProvider, $locationProvider) {
@@ -23,11 +20,6 @@ app.config(function($routeProvider, $locationProvider) {
       navId: 'welcome',
       title: 'Welcome',
       template: '<li:welcome></li:welcome>'
-    })
-    .when('/messages', {
-      navId: 'messages',
-      title: 'Messages',
-      template: '<li:messages></li:messages>'
     })
     .otherwise({
       navId: 'welcome',
