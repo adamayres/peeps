@@ -4,9 +4,9 @@
  * Main App Module
  */
 var app = angular.module('li.main.app', [
-  'ngRoute',
   'ngSanitize',
   'ngAnimate',
+  'ui.router',
   'ui.bootstrap',
   'li.main.tpls',
   'li.app.filters.unsafe',
@@ -14,25 +14,23 @@ var app = angular.module('li.main.app', [
   ///__new_directive_placeholder__///
 ]);
 
-app.config(function($routeProvider, $locationProvider) {
-  $routeProvider
-    .when('/', {
-      navId: 'welcome',
-      title: 'Welcome',
-      template: '<li:welcome></li:welcome>'
-    })
-    .otherwise({
-      navId: 'welcome',
-      title: 'Welcome',
-      template: '<li:welcome></li:welcome>'
-    });
+app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
   $locationProvider.html5Mode(true);
+
+  $urlRouterProvider.otherwise('/');
+
+  $stateProvider
+    .state('slash', {
+      url: '/',
+      template: '<li:welcome></li:welcome>',
+      data: {
+        title: 'Peeps!'
+      }
+    });
+
 });
 
-app.run(function($location, $rootScope) {
-  $rootScope.$on('$routeChangeSuccess', function (event, current) {
-    $rootScope.title = current.$$route.title;
-    $rootScope.navId = current.$$route.navId;
-  });
+app.run(function($rootScope, $state) {
+  $rootScope.$state = $state;
 });

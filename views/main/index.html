@@ -2,7 +2,7 @@
 <html ng-app="li.main.app">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title ng-bind="title"></title>
+    <title ng-bind="$state.current.data.title"></title>
     <!-- build:css /styles/style.css -->
     <link rel="stylesheet" href="/.tmp/assets/main/styles/main.css">
     <!-- endbuild -->
@@ -10,12 +10,12 @@
     <base href="/" />
   </head>
   <body ng-cloak>
-    <div ng-view="ng-view" />
+    <div ui-view></div>
 
     <!-- External deps for CDN -->
     <script type="text/javascript" src="/bower_components/angular/angular.js"></script>
     <script type="text/javascript" src="/bower_components/angular-animate/angular-animate.js"></script>
-    <script type="text/javascript" src="/bower_components/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script type="text/javascript" src="/bower_components/socket.io-client/dist/socket.io.js"></script>
 
     <!-- build:js /js/scripts.js -->
