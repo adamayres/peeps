@@ -35,8 +35,9 @@ $use-fadeOut: true;
 
 /* Core libraries */
 
+@import "mixins";
 @import "animations";
 @import "base";
-@import "mixins";
 
 @import "../js/directives/welcome/welcome";
+@import "../js/directives/user-import/user-import.scss";

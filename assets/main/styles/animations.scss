@@ -1,14 +1,17 @@
-.ng-enter, .ng-hide-remove {
-  -webkit-animation: fadeInUp 300ms;
-  -moz-animation: fadeInUp 300ms;
-  -ms-animation: fadeInUp 300ms;
-  animation: fadeInUp 300ms;
+.li-fade.ng-enter, .li-fade.ng-hide-remove {
+  @include animate(fadeIn, 200ms);
 }
 
-//.ng-leave, .ng-hide.ng-hide-add {
+.li-fade.ng-leave, .li-fade.ng-hide.ng-hide-add {
+  display: block !important;
+  @include animate(fadeOut, 200ms);
+}
+//
+//.no-animate .ng-enter, .no-animate .ng-hide-remove, .no-animate.ng-enter, .no-animate.ng-hide-remove {
+//  @include animation(fadeIn, 0ms);
+//}
+//
+//.no-animate .ng-leave, .no-animate .ng-hide.ng-hide-add, .no-animate.ng-leave, .no-animate.ng-hide.ng-hide-add {
 //  display: block !important;
-//  -webkit-animation: fadeOut 300ms;
-//  -moz-animation: fadeOut 300ms;
-//  -ms-animation: fadeOut 300ms;
-//  animation: fadeOut 300ms;
+//  @include animation(fadeOut, 0ms);
 //}

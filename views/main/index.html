@@ -5,11 +5,15 @@
     <title ng-bind="$state.current.data.title"></title>
     <!-- build:css /styles/style.css -->
     <link rel="stylesheet" href="/.tmp/assets/main/styles/main.css">
+    <link rel="stylesheet" href="/bower_components/angular-bootstrap/">
     <!-- endbuild -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="shortcut icon" type="image/ico" href="/favicon.png">
     <base href="/" />
   </head>
   <body ng-cloak>
+    <a ui-sref="home">Home</a>
+    <a ui-sref="import">Import</a>
     <div ui-view></div>
 
     <!-- External deps for CDN -->
@@ -17,6 +21,7 @@
     <script type="text/javascript" src="/bower_components/angular-animate/angular-animate.js"></script>
     <script type="text/javascript" src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script type="text/javascript" src="/bower_components/socket.io-client/dist/socket.io.js"></script>
+    <script type="text/javascript" src="/bower_components/ng-file-upload/angular-file-upload.js"></script>
 
     <!-- build:js /js/scripts.js -->
 
@@ -32,6 +37,9 @@
     <script type="text/javascript" src="/assets/main/js/filters/unsafe/unsafe.js"></script>
     <script type="text/javascript" src="/assets/main/js/directives/welcome/welcome.js"></script>
 
+
+    <!-- user-import -->
+    <script type="text/javascript" src="/assets/main/js/directives/user-import/user-import.js"></script>
     <!-- __new_directive_placeholder__ -->
 
     <!-- endbuild -->

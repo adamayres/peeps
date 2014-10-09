@@ -5,3 +5,26 @@
   -o-transition: $transition-property $transition-time $method;
   transition: $transition-property $transition-time $method;
 }
+
+@mixin animate($method, $animation-time) {
+  -webkit-animation: $method $animation-time;
+  -moz-animation: $method $animation-time;
+  -ms-animation: $method $animation-time;
+  -o-animation: $method $animation-time;
+  animation: $method $animation-time;
+}
+
+//@mixin media($size) {
+//  @if $size == xs {
+//    @media (max-width: $screen-xs-max) { @content ; }
+//  }
+//  @else if $size == sm {
+//    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) { @content ; }
+//  }
+//  @else if $size == md {
+//    @media (min-width: $screen-md-min) and (max-width: $screen-md-max) { @content ; }
+//  }
+//  @else if $size == lg {
+//    @media (min-width: $screen-lg-min) { @content ; }
+//  }
+//}

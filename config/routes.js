@@ -35,7 +35,9 @@ module.exports.routes = {
 
   '/': function(req, res) {
     return res.sendfile('.tmp/assets/main/index.html');
-  }
+  },
+
+  '/users/import': 'UsersController.import'
 
   /***************************************************************************
   *                                                                          *

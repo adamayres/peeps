@@ -10,8 +10,8 @@ var app = angular.module('li.main.app', [
   'ui.bootstrap',
   'li.main.tpls',
   'li.app.filters.unsafe',
-  'li.app.directives.welcome'
-  ///__new_directive_placeholder__///
+  'li.app.directives.welcome',
+  'li.main.directives.user-import'///__new_directive_placeholder__///
 ]);
 
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -21,11 +21,18 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-    .state('slash', {
+    .state('home', {
       url: '/',
       template: '<li:welcome></li:welcome>',
       data: {
         title: 'Peeps!'
+      }
+    })
+    .state('import', {
+      url: '/user-import',
+      template: '<li:user-import></li:user-import>',
+      data: {
+        title: 'Import Peeps!'
       }
     });
 

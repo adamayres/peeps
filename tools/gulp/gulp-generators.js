@@ -61,55 +61,64 @@ module.exports = function (gulp, gutil, options) {
     }
 
     inquirer.prompt([
-        {type: 'input', name: 'name', message: 'Directive name? (e.g. hello-world):', validate: validate},
-        {type: 'list', name: 'type', message: 'is this an admin directive?:', choices: ['widgets', 'admin', 'common'],
-          validate: validate}
-      ],
-      function (answers) {
-        var promises = [];
+      {
+        type: 'input',
+        name: 'name',
+        message: 'Directive name? (e.g. hello-world):',
+        validate: validate
+      },
+      {
+        type: 'list',
+        name: 'type',
+        message: 'Which app?:',
+        choices: ['main'],
+        validate: validate
+      }
+    ], function (answers) {
+      var promises = [];
 
-        answers.camelizedName = S('li-' + answers.name).camelize().s;
+      answers.camelizedName = S('li-' + answers.name).camelize().s;
 
-        Q.all(
-          create(answers, '.js'),
-          create(answers, '.tpl.html'),
-          create(answers, '.scss'),
-          create(answers, '.spec.js'),
-          addScript(answers),
-          addStyle(answers),
-          addModule(answers)
-        );
+      Q.all(
+        create(answers, '.js'),
+        create(answers, '.tpl.html'),
+        create(answers, '.scss'),
+        create(answers, '.spec.js'),
+        addScript(answers),
+        addStyle(answers),
+        addModule(answers)
+      );
 
-        var magenta = gutil.colors.magenta;
+      var magenta = gutil.colors.magenta;
 
-        var path = answers.name + '/' + answers.name;
-        Q.all(promises).then(function () {
-          gutil.log('');
-          gutil.log(gutil.colors.green.bold(answers.camelizedName) + ' directive created!');
-          gutil.log('');
-          gutil.log('- Use the directive in a template: ' +
-            '' + gutil.colors.blue.bold('<li:' + answers.name + '></li:' + answers.name + '>'));
-          gutil.log('');
-          gutil.log('- The following files have been created');
-          gutil.log('  - ' + magenta('assets' + getAdditionalPath(answers) + '/js/directives/' + path + '.js'));
-          gutil.log('  - ' + magenta('assets' + getAdditionalPath(answers) + '/js/directives/' + path + '.tpl.html'));
-          gutil.log('  - ' + magenta('assets' + getAdditionalPath(answers) + '/js/directives/' + path + '.scss'));
-          gutil.log('  - ' + magenta('assets' + getAdditionalPath(answers) + '/js/directives/' + path + '.spec.js'));
-          gutil.log('');
-          gutil.log('- Details');
-          gutil.log('  - Directive module name: ' + gutil.colors.blue.bold('li.' +
-            answers.type + '.directives.' + answers.name));
-          gutil.log('  - Directive name: ' + gutil.colors.blue.bold(answers.camelizedName));
-          gutil.log('');
-          gutil.log('- A script tag for the directive has been added to: ' +
-            '' + gutil.colors.yellow('views' + getAdditionalPath(answers) + '/main/index.html'));
-          gutil.log('- An @import to the directive styles has been added to: ' +
-            '' + gutil.colors.yellow('assets' + getAdditionalPath(answers) + '/styles/main.scss'));
-          gutil.log('- The directive module has been added as a dependency to the main Angular app module in: ' +
-            '' + gutil.colors.yellow('assets' + getAdditionalPath(answers) + '/app.js'));
-          gutil.log('');
-          done();
-        });
+      var path = answers.name + '/' + answers.name;
+      Q.all(promises).then(function () {
+        gutil.log('');
+        gutil.log(gutil.colors.green.bold(answers.camelizedName) + ' directive created!');
+        gutil.log('');
+        gutil.log('- Use the directive in a template: ' +
+          '' + gutil.colors.blue.bold('<li:' + answers.name + '></li:' + answers.name + '>'));
+        gutil.log('');
+        gutil.log('- The following files have been created');
+        gutil.log('  - ' + magenta('assets' + getAdditionalPath(answers) + '/js/directives/' + path + '.js'));
+        gutil.log('  - ' + magenta('assets' + getAdditionalPath(answers) + '/js/directives/' + path + '.tpl.html'));
+        gutil.log('  - ' + magenta('assets' + getAdditionalPath(answers) + '/js/directives/' + path + '.scss'));
+        gutil.log('  - ' + magenta('assets' + getAdditionalPath(answers) + '/js/directives/' + path + '.spec.js'));
+        gutil.log('');
+        gutil.log('- Details');
+        gutil.log('  - Directive module name: ' + gutil.colors.blue.bold('li.' +
+          answers.type + '.directives.' + answers.name));
+        gutil.log('  - Directive name: ' + gutil.colors.blue.bold(answers.camelizedName));
+        gutil.log('');
+        gutil.log('- A script tag for the directive has been added to: ' +
+          '' + gutil.colors.yellow('views' + getAdditionalPath(answers) + '/main/index.html'));
+        gutil.log('- An @import to the directive styles has been added to: ' +
+          '' + gutil.colors.yellow('assets' + getAdditionalPath(answers) + '/styles/main.scss'));
+        gutil.log('- The directive module has been added as a dependency to the main Angular app module in: ' +
+          '' + gutil.colors.yellow('assets' + getAdditionalPath(answers) + '/app.js'));
+        gutil.log('');
+        done();
       });
+    });
   });
 };
