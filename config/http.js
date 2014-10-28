@@ -64,6 +64,7 @@ module.exports.http = {
     }
 
     app.use('/assets',  express.static('.tmp/assets'));
+    app.use('/uploads', express.static('.tmp/uploads'));
 
     app.use(modRewrite([
       '!\\.html|\\.js|\\.css|\\.woff|\\.ttf|\\.png|\\.jpg|\\.gif|\\.svg|\\.json|\\api/(.*)$ / [L]'

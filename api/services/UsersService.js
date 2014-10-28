@@ -1,6 +1,6 @@
 'use strict';
 
-/* globals Users, sails */
+/* globals Users, sails, Departments, Locations */
 
 var Promise = require('bluebird');
 var fs = require('fs');
@@ -27,6 +27,8 @@ var keyMap = {
 function csvToJson (file) {
   var firstRow = true;
   var keyOrder = [];
+
+  console.log(0.5);
 
   return new Promise(function (resolve, reject) {
     var readStream = fs.createReadStream(file, { encoding: 'utf8' });
@@ -81,6 +83,42 @@ function csvToJson (file) {
   });
 }
 
+function upsertDepartment (departmentName) {
+  if (departmentName) {
+    return Departments.findOneByName(departmentName).then(function (department) {
+      if (department) {
+        return department;
+      } else {
+        return Departments.create({
+          name: departmentName
+        });
+      }
+    }).then(function (department) {
+      return department;
+    });
+  }
+
+  return Promise.reject();
+}
+
+function upsertLocation (locationName) {
+  if (locationName) {
+    return Locations.findOneByName(locationName).then(function (location) {
+      if (location) {
+        return location;
+      } else {
+        return Locations.create({
+          name: locationName
+        });
+      }
+    }).then(function (location) {
+      return location;
+    });
+  }
+
+  return Promise.reject();
+}
+
 function importUsers (file) {
   var created = [];
   var updated = [];
@@ -88,6 +126,7 @@ function importUsers (file) {
 
   return csvToJson(file).map(function (userImport) {
     imports.push(extend({}, userImport));
+
     return Users.findOneByEmail(userImport.email).then(function (user) {
       return {
         user: user,
@@ -95,7 +134,17 @@ function importUsers (file) {
       };
     });
   }).map(function (item) {
-
+    return Promise.all([
+      upsertDepartment(item.import.department).then(function (department) {
+        item.import.department = department.id;
+      }),
+      upsertLocation(item.import.location).then(function (location) {
+        item.import.location = location.id;
+      })
+    ]).then(function () {
+      return item;
+    });
+  }, {concurrency: 1}).map(function (item) {
     if (item.user) {
       return Users.update(item.user.id, item.import).then(function (user) {
         updated.push(user);

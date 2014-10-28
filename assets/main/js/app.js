@@ -11,7 +11,11 @@ var app = angular.module('li.main.app', [
   'li.main.tpls',
   'li.app.filters.unsafe',
   'li.app.directives.welcome',
-  'li.main.directives.user-import'///__new_directive_placeholder__///
+  'li.main.directives.user-import',
+  'li.main.directives.users',
+  'li.main.directives.main-nav',
+  'li.main.directives.user',
+  'li.main.directives.lazyload'///__new_directive_placeholder__///
 ]);
 
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -23,16 +27,26 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
   $stateProvider
     .state('home', {
       url: '/',
-      template: '<li:welcome></li:welcome>',
+      template: '<li:users></li:users>',
       data: {
-        title: 'Peeps!'
+        title: 'Peeps - Home',
+        tab: 'home'
+      }
+    })
+    .state('users', {
+      url: '/users/:id',
+      template: '<li:user></li:user>',
+      data: {
+        title: 'Peeps - User',
+        tab: 'user'
       }
     })
     .state('import', {
       url: '/user-import',
       template: '<li:user-import></li:user-import>',
       data: {
-        title: 'Import Peeps!'
+        title: 'Peeps - Import',
+        tab: 'import'
       }
     });
 

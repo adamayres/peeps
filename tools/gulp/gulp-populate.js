@@ -9,7 +9,6 @@ module.exports = function (gulp, gutil) {
   gulp.task('populate-users', function () {
     return gulp.src('data/users/PEEPS_9_26_2014.csv', { read: false }).pipe(gutil.buffer(function(err, files) {
       files.forEach(function (file) {
-        console.log(0);
         request.post({
           url: 'http://localhost:1337/api/users/import',
           formData: {
