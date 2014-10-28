@@ -5,9 +5,11 @@
 * @docs        :: http://sailsjs.org/#!documentation/models
 */
 
-module.exports = {
+'use strict';
 
-  identity: 'Users',
+/* globals ImagesService */
+
+module.exports = {
 
   attributes: {
     positionId: {
@@ -37,13 +39,36 @@ module.exports = {
       type: 'string'
     },
     location: {
-      type: 'string'
+      model: 'Locations'
     },
     department: {
-      type: 'string'
+      model: 'Departments'
     },
     eStaff: {
       type: 'string'
+    },
+    images: {
+      collection: 'Images',
+      via: 'user'
+    },
+    avatar: {
+      model: 'Images'
+    }
+  },
+
+  beforeCreate: function (values, cb) {
+    if (!values.preferredName || values.preferredName.trim() === '') {
+      values.preferredName = values.firstName;
+    }
+
+    cb();
+  },
+
+  afterCreate: function (user, cb) {
+    if (!user.images || user.images.length === 0) {
+        return ImagesService.createImageForUser(user).nodeify(cb);
+    } else {
+      cb();
     }
   }
 };
