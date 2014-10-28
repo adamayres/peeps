@@ -1,0 +1,52 @@
+<div class="li-users">
+  <div class="menu-bar clearfix">
+    <div class="row">
+      <div class="col-xs-4">
+
+        <form class="form search-form" role="form">
+          <div class="form-group">
+            <input ng-model-options="{debounce: 500}" type="text" class="form-control" ng-model="searchText" placeholder="Search for a user...">
+          </div>
+        </form>
+      </div>
+
+      <div class="col-xs-4">
+        <div class="btn-group" dropdown>
+          <button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+            Sort <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li ng-class="{'active': sort === 'hireDate'}"><a href="#" ng-click="doSort('hireDate')">Hire Date <i class="fa fa-sort-{{sortDir}}" ng-show="sort === 'hireDate'"></i></a></li>
+            <li ng-class="{'active': sort === 'preferredName'}"><a href="#" ng-click="doSort('preferredName')">First Name <i class="fa fa-sort-{{sortDir}}" ng-show="sort === 'preferredName'"></i></a></li>
+            <li ng-class="{'active': sort === 'lastName'}"><a href="#" ng-click="doSort('lastName')">Last Name <i class="fa fa-sort-{{sortDir}}" ng-show="sort === 'lastName'"></i></a></li>
+          </ul>
+        </div>
+
+        <div class="btn-group pull-right quantity">
+          <button type="button" class="btn btn-default btn-sm" ng-class="{'active': quantity === 50}" ng-click="quantity = 50">50</button>
+          <button type="button" class="btn btn-default btn-sm" ng-class="{'active': quantity === 100}" ng-click="quantity = 100">100</button>
+          <button type="button" class="btn btn-default btn-sm" ng-class="{'active': quantity === 200}" ng-click="quantity = 200">200</button>
+          <button type="button" class="btn btn-default btn-sm" ng-class="{'active': quantity === 1000}" ng-click="quantity = 1000">All</button>
+        </div>
+
+        <div class="btn-group pull-right view-type">
+          <button type="button" class="btn btn-default btn-sm" ng-class="{'active': view === 'table'}" ng-click="view = 'table'"><i class="fa fa-th"></i></button>
+          <button type="button" class="btn btn-default btn-sm" ng-class="{'active': view === 'list'}" ng-click="view = 'list'"><i class="fa fa-list-ul"></i></button>
+        </div>
+      </div>
+
+      <div class="col-xs-4">
+        <div class="pull-right">
+          <pagination total-items="count" ng-model="page" items-per-page="quantity" class="pagination-sm"></pagination>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <ul class="li-users-list">
+    <li class="li-users-list-item" ng-repeat="user in users track by user.id">
+        <li:user user="user"></li:user>
+    </li>
+  </ul>
+</div>

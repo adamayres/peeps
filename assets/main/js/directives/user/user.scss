@@ -1,0 +1,35 @@
+$user-img-size: 100px;
+$user-img-padding: 4px;
+$user-img-border: 1px;
+$user-img-border-radius: $user-img-size / 2;
+
+$user-img-container-size: $user-img-size + ($user-img-padding * 2) + ($user-img-border * 2);
+$user-img-container-border-radius: $user-img-container-size / 2;
+
+
+.li-user {
+  &.li-user-tile {
+    margin: 0 10px 10px 0;
+    width: 200px;
+    height: 200px;
+    border-radius: $border-radius-large;
+    text-align: center;
+  }
+
+  .li-user-image-container {
+    height: $user-img-container-size;
+    width: $user-img-container-size;
+    border: $user-img-border solid $thumbnail-border;
+    border-radius: $user-img-container-border-radius;
+    padding: $user-img-padding;
+  }
+
+  .li-user-image {
+    background-size: cover;
+    height: $user-img-size;
+    width: $user-img-size;
+    margin: auto;
+    border-radius: $user-img-border-radius;
+
+  }
+}

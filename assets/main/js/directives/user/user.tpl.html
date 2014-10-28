@@ -1,0 +1,11 @@
+<div class="li-user li-user-tile panel panel-default" li-lazyload="inView = true">
+  <div class="panel-body">
+    <div class="li-user-image-container">
+      <div class="li-user-image" style="background-image: url('{{image(inView)}}');"></div>
+    </div>
+
+    <a class="li-user-name" ui-sref="users({id: user.id})">{{::user.preferredName}} {{::user.lastName}}</a>
+    <span class="li-user-jobtitle">{{user.jobTitle}}</span>
+    <span class="li-user-location">{{user.location.name}}</span>
+  </div>
+</div>
