@@ -14,6 +14,10 @@ module.exports = {
       type: 'string',
       required: true,
       unique: true
+    },
+    users: {
+      collection: 'users',
+      via: 'location'
     }
   }
 };

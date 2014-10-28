@@ -10,8 +10,10 @@
 /* globals UsersService */
 
 module.exports = {
+  count: require('../blueprints/count'),
+
   import: function (req, res) {
-    req.file('file').upload(function (err, uploadedFiles) {
+    req.file('file').upload({dirname: 'users'}, function (err, uploadedFiles) {
       if (err) {
         return res.send(500, err);
       }

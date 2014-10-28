@@ -7,13 +7,15 @@
 
 module.exports = {
 
-  identity: 'Departments',
-
   attributes: {
     name: {
       type: 'string',
       required: true,
       unique: true
+    },
+    users: {
+      collection: 'users',
+      via: 'department'
     }
   }
 };
