@@ -35,7 +35,7 @@ module.exports = function (gulp, gutil, watched, options) {
         src: options.dir + '/assets/' + app + '/styles/main.scss',
         file: undefined,
         dest: options.dir + '/.tmp/assets/' + app + '/styles/',
-        paths: [options.dir + '/assets/' + app + '/styles/', options.dir],
+        paths: [options.dir + '/assets/' + app + '/styles/', options.dir, options.dir + '/bower_components'],
         isReload: true,
         isWatch: true
       });
@@ -55,7 +55,7 @@ module.exports = function (gulp, gutil, watched, options) {
       src: options.dir + '/tools/docs/styles.scss',
       file: undefined,
       dest: options.dir + '/.tmp/assets/widgets/docs',
-      paths: [options.dir + '/assets/widgets/styles', options.dir],
+      paths: [options.dir + '/assets/widgets/styles', options.dir, options.dir + '/bower_components'],
       isReload: false
     });
   });

@@ -4,40 +4,42 @@
  * This should only contain @import's of third party libraries and core libraries.
  */
 
-/* Main Twitter Bootstrap library */
-@import "bower_components/bootstrap-sass/lib/bootstrap";
-
-/* Twitter Bootstrap variables and includes */
-@import "bower_components/bootstrap-sass/lib/variables.scss";
-@import "bower_components/bootstrap-sass/lib/mixins.scss";
+/* Bootstrap + Bootswatch */
+@import "../../../bower_components/bootswatch-scss/sandstone/variables";
+@import "../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/variables";
+@import "../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
+@import "../../../bower_components/bootswatch-scss/sandstone/bootswatch";
 
 /* Font Awesome library */
-@import "bower_components/font-awesome/scss/font-awesome";
+@import "../../../bower_components/components-font-awesome/scss/font-awesome";
 
 /* SASS port of Animate.css */
-@import "bower_components/animate-sass/animate";
+@import "../../../bower_components/animate-sass/animate";
 
 /* A la carte inclusion of Animate.SASS */
 $use-fadeIn: true;
-@import "bower_components/animate-sass/animations/fade-enter/fadeIn";
+@import "../../../bower_components/animate-sass/animations/fade-enter/fadeIn";
 
 $use-fadeOutUp: true;
-@import "bower_components/animate-sass/animations/fade-exit/fadeOutUp";
+@import "../../../bower_components/animate-sass/animations/fade-exit/fadeOutUp";
 
 $use-fadeInUp: true;
-@import "bower_components/animate-sass/animations/fade-enter/fadeInUp";
+@import "../../../bower_components/animate-sass/animations/fade-enter/fadeInUp";
 
 $use-fadeOutRight: true;
-@import "bower_components/animate-sass/animations/fade-exit/fadeOutRight";
+@import "../../../bower_components/animate-sass/animations/fade-exit/fadeOutRight";
 
 $use-fadeOut: true;
-@import "bower_components/animate-sass/animations/fade-exit/fadeOut";
+@import "../../../bower_components/animate-sass/animations/fade-exit/fadeOut";
 
 /* Core libraries */
-
 @import "mixins";
 @import "animations";
 @import "base";
 
 @import "../js/directives/welcome/welcome";
 @import "../js/directives/user-import/user-import.scss";
+@import "../js/directives/main-nav/main-nav.scss";
+@import "../js/directives/users/users.scss";
+@import "../js/directives/user/user.scss";
+@import "../js/directives/lazyload/lazyload.scss";
