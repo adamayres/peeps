@@ -53,5 +53,4 @@ test-reports
 ########################
 # config/local.js
 
-import.csv
-import2.csv
+data/
