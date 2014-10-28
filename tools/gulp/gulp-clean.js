@@ -1,23 +1,35 @@
 'use strict';
 
-var clean = require('gulp-rimraf');
+var clean = require('gulp-clean');
 
 module.exports = function (gulp, gutil, options) {
+  function _clean (src, done) {
+    return gulp.src(options.dir + src, { read: false })
+      .pipe(clean({ force: true }))
+      .on('error', done)
+      .on('data', function () {}) // fix end emit, listen the data
+      .on('end', function () {});
+  }
+
   /*
    * Clean tasks
    */
   gulp.task('clean', ['clean-assets', 'clean-coverage', 'clean-test', 'clean-logs']);
 
-  gulp.task('clean-assets', function () {
-    return gulp.src(options.dir + '/.tmp/assets/**').pipe(clean());
+  gulp.task('clean-assets', function (done) {
+    return _clean('/.tmp/assets/**', done);
   });
 
-  gulp.task('clean-coverage', function () {
-    return gulp.src(options.dir + 'tests/e2e/spec/coverage').pipe(clean());
+  gulp.task('clean-uploads', function (done) {
+    return _clean('/.tmp/uploads/**', done);
   });
 
-  gulp.task('clean-test', function () {
-    return gulp.src(options.dir + '/test-reports').pipe(clean());
+  gulp.task('clean-coverage', function (done) {
+    return _clean('tests/e2e/spec/coverage', done);
+  });
+
+  gulp.task('clean-test', function (done) {
+    return _clean('/test-reports', done);
   });
 
   gulp.task('clean-db2', function () {
@@ -29,43 +41,45 @@ module.exports = function (gulp, gutil, options) {
   });
 
   gulp.task('clean-db', function () {
-    var adapters = require(options.dir + '/config/locals').adapters, db = adapters['default'];
-      //TODO if env === 'prod', don't let this happen
-    if (db === 'mysql') {
+    var connections = require(options.dir + '/config/connections').connections;
+    var connectionName = require(options.dir + '/config/models').models.connection;
+    var connection = connections[connectionName];
+
+    if (connection.adapter === 'sails-mysql') {
       var mysql = require('mysql');
-      var connection = mysql.createConnection({
-        host: adapters.mysql.host,
-        user: adapters.mysql.user,
-        password: adapters.mysql.password
+      var dbConnection = mysql.createConnection({
+        host: connection.host,
+        user: connection.user,
+        password: connection.password
       });
 
-      connection.connect();
+      dbConnection.connect();
 
-      connection.query('drop database li_widgets', function(err) {
+      dbConnection.query('drop database ' + connection.database, function(err) {
         if (err) {
           gutil.log(gutil.colors.red(err));
-          connection.end();
+          dbConnection.end();
           process.exit(1);
         }
 
-        gutil.log(gutil.colors.green('Successfully dropped the li_widgets database.'));
+        gutil.log(gutil.colors.green('Successfully dropped the ' + connection.database + ' database.'));
 
-        connection.query('create database li_widgets', function(err) {
+        dbConnection.query('create database ' + connection.database, function(err) {
           if (err) {
             gutil.log(gutil.colors.red(err));
             process.exit(1);
           }
 
-          gutil.log(gutil.colors.green('Successfully created the li_widgets database.'));
+          gutil.log(gutil.colors.green('Successfully created the ' + connection.database + ' database.'));
 
         });
 
-        connection.end();
+        dbConnection.end();
       });
-    } else if (db === 'disk') {
+    } else if (connection.adapter === 'sails-disk') {
       return gulp.src(options.dir + '/.tmp/disk.db').pipe(clean());
     } else {
-      gutil.log(gutil.colors.red.bold(db) + ' : clean not supported!');
+      gutil.log(gutil.colors.red.bold(connection.adapter) + ' : clean not supported!');
     }
   });
 
