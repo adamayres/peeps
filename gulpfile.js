@@ -106,6 +106,7 @@ require('./tools/gulp/gulp-release')(gulp, gutil, options);
 require('./tools/gulp/gulp-scripts')(gulp, gutil, watched, options);
 require('./tools/gulp/gulp-styles')(gulp, gutil, watched, options);
 require('./tools/gulp/gulp-test')(gulp, gutil, options);
+require('./tools/gulp/gulp-populate')(gulp, gutil, options);
 
 /*
  * Default task will start the app
@@ -224,3 +225,4 @@ gulp.task('bower', function () {
 
   return defer.promise;
 });
+
